@@ -1,19 +1,48 @@
 $fn=80;
 
-wall = 3;
-heigth=16;
-widht = 82;
+wall = 1.4;
+heigth=7;
+widht = 40-2*wall;
 
-extruder = 40;
+extruder = 30;
 
 
-lock=3;
+//air hole
+lock=1;
 
-rotate([180,0,0])
+//disantce fan from extruder 
+distance = 35;
+
+
+
+front();
+translate([-widht/2-wall, widht/2,0]) fan();
+
+
+module fan(){
+difference(){
+cube([widht+2*wall, distance - widht/2,widht+2*wall]);
+translate([wall,wall,wall])cube([widht, distance - widht/2-2*wall,widht]);
+
+translate([widht/2+wall,distance - widht/2-wall-1,widht/2+wall,])
+rotate([-90,0,0])
+cylinder(r=widht/2-wall,h=2*wall);
+
+translate([wall,0,wall]) #cube([widht, 2*wall, heigth]);
+
+}
+
+
+
+}
+
+
+module front(){
 difference(){
  block();
  inside();
  cylinder(r=extruder/2+wall+ lock, h=wall);
+}
 }
 
 module inside(){
