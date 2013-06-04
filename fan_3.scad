@@ -32,39 +32,39 @@ cube([widht,  goup_from_extruder, air_channel_high + 2* wall ]);
 
 
 module channel(){
-difference(){
-extern_channel();
+	difference(){
+		extern_channel();
 
-translate([wall, wall,wall])
-intern_channel();
+		translate([wall, wall,wall])
+		intern_channel();
 
-//air under
-translate([wall +air_channel-air_hole,wall +air_channel-air_hole,0])
-cube([extruder_width +2*wall  +2*air_hole, extruder_width +2*wall +2*air_hole , wall+air_hole ]);
+		//air under
+		translate([wall +air_channel-air_hole,wall +air_channel-air_hole,0])
+		cube([extruder_width +2*wall  +2*air_hole, extruder_width +2*wall +2*air_hole , wall+air_hole ]);
 
-//hole to fan
-translate([wall,-1,wall])
-cube([widht-2*wall,  2*wall,  air_channel_high ]);
-}
+		//hole to fan
+		translate([wall,-1,wall])
+		cube([widht-2*wall,  2*wall,  air_channel_high ]);
+	}
 }
 
 module extern_channel(){
-difference(){
-cube([widht,  widht,  air_channel_high + 2* wall ]);
+	difference(){
+		cube([widht,  widht,  air_channel_high + 2* wall ]);
 
-//extruder
-translate([ 2*wall +air_channel,   2*wall +air_channel  , 0])
-cube([extruder_width , extruder_width, air_channel_high + 2* wall ]);
-}
+		//extruder
+		translate([ 2*wall +air_channel,   2*wall +air_channel  , 0])
+		cube([extruder_width , extruder_width, air_channel_high + 2* wall ]);
+	}
 }
 
 
 module intern_channel(){
-difference(){
-cube([widht -2*wall,  widht-2*wall,  air_channel_high]);
+	difference(){
+		cube([widht -2*wall,  widht-2*wall,  air_channel_high]);
 
-//extruder
-translate([ air_channel,   air_channel  , 0])
-cube([extruder_width +2*wall, extruder_width+2*wall, air_channel_high]);
-}
+		//extruder
+		translate([ air_channel,   air_channel  , 0])
+		cube([extruder_width +2*wall, extruder_width+2*wall, air_channel_high]);
+	}
 }
