@@ -6,13 +6,13 @@ module bar() {
 	union(){
 		
 		difference(){
-			rotate_extrude(convexity = 120) translate ([44,0,0]) circle(11);
+			rotate_extrude(convexity = 120) translate ([49,0,0]) circle(11);
 			translate([-70,0,-11]) cube([70,70,45]);
 			translate([-70,-70,-11]) cube([140,70,45]);
 		}
 	
-		translate([44,0,0]) rotate([90,0,0]) cylinder(r=11,h=80);	
-		translate([0,44,0]) rotate([0,270,0]) cylinder(r=11,h=80);
+		translate([49,1,0]) rotate([90,0,0]) cylinder(r=11,h=80);	
+		translate([1,49,0]) rotate([0,270,0]) cylinder(r=11,h=80);
 	}
 }
 
@@ -33,17 +33,17 @@ module slider() {
 	}
 }
 
-
-/*
+model = 1;
+if (model==1) {
 rotate([180,0,0])
 difference() {
 	slider();
-	translate([0, 40, -11+10-3])
+	translate([0, 34, -11+10-3])
 	rotate([0,0,45]) #bar();
 }
-*/
 
 
+} else {
 
 rotate([180,0,0])
 difference() {
@@ -51,5 +51,5 @@ difference() {
 	translate([55+17, 0, 10-3]) 
 	rotate([90,0,0]) #bar();
 }
-
+}
 
